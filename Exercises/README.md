@@ -9,3 +9,16 @@
 3. Once you've finished, copy it on the [CreatorSim website](https://creatorsim.github.io/creator/) and simulate it.
 
 4. Simulate your code and see how the executions goes by looking at the values of the registers at each step. Change your code when necessary.
+
+
+## How to simulate your Assembly code
+
+I really recommend trying CreatorSim to test your code. It's a tool created by the UC3M to simulate your code step by step and seeing how the registers change at each step:
+
+[CreatorSim website](https://creatorsim.github.io/creator/)
+
+![CreatorSim.gif](https://github.com/aaronespasa/Learn-Assembly/blob/main/Images/creatorsim.gif)
+
+
+
+## Made with ☕️ and ❤️ by @aaronespasa
