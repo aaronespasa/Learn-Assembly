@@ -18,7 +18,7 @@ It has two coprocessors:
 
 ## My Notes
 
-I attach the notes I took during the Assembly classes at my university. All the slides I included are the property of UC3M:
+I attach the notes I took during the Assembly classes at my university. All the slides I included belong to the UC3M:
 
 [Assembly Notes](https://aaronespasa.notion.site/3-Assembly-daeae594d0aa44cb8a806d7611f88113)
 
