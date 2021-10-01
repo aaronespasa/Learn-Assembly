@@ -42,13 +42,13 @@ In the Exercises folder you will find all the instructions to test the exercises
 
 
 
-## Useful Resources
+## How to simulate your Assembly code
 
 I really recommend trying CreatorSim to test your code. It's a tool created by the UC3M to simulate your code step by step and seeing how the registers change at each step:
 
+[CreatorSim website](https://creatorsim.github.io/creator/)
 
-
-[CreatorSim](https://creatorsim.github.io/creator/)
+![CreatorSim.gif](https://github.com/aaronespasa/Learn-Assembly/blob/main/Images/creatorsim.gif)
 
 
 
