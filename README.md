@@ -1,4 +1,7 @@
 # Learn Assembly (MIPS 32)
+
+<p align="center"><img src="https://wavecomp.ai/wp-content/uploads/2019/03/Wave_MIPS-Technology-Infographic.png" width="500" /></p>
+
 ## What is the MIPS-32 Architecture?
 
 It's a microprocessor where the size of the memory addresses is 32 bits. This implies two things:
@@ -35,7 +38,7 @@ In the Exercises folder you will find all the instructions to test the exercises
 
 
 
-[Link to the Exercises folder]()
+[Link to the Exercises folder](https://github.com/aaronespasa/Learn-Assembly/tree/main/Exercises)
 
 
 
