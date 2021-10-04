@@ -13,7 +13,7 @@ main:
 	la $t2, arrayB							# $t2 = address of ArrayB
     la $t3, arrayC							# $t3 = address of ArrayC
 
-    li $t4, 0                               # $t4 = i = 0
+    li $t4, 0                               # $t4 = i = 0 (index)
     li $s1, 10                              # $s1 = arrayLength = 10
 
     li $v0, 4                               # Call Code: 4 -> print string on $a0
