@@ -19,7 +19,7 @@ main:
     li $v0, 4                               # Call Code: 4 -> print string on $a0
     la $a0, string                          # $a0 = address of string
     syscall                                 # print($a0)
-
+    
     j for                                   # jump to loop
 
 for:                                        # for (int i=0; i <array.length; i++)
@@ -31,7 +31,15 @@ for:                                        # for (int i=0; i <array.length; i++
     lw $t5, ($t1)
     # B[i] -> get (load) a value (word) from arrayB and store it in $t6                           
     lw $t6, ($t2)                           
-
+    
+    #############
+    # if B[i] < A[i]:
+    #   # Remember that C[i] == 1
+    #   movePointer()
+    # else:
+    # C[i] = 0
+    # movePointer()
+    #############
     # slt -> set on less than
     slt $t0, $t6, $t5                       # if B[i] < A[i], set $t0 to 1. Otherwise, 0.
 
@@ -42,6 +50,7 @@ for:                                        # for (int i=0; i <array.length; i++
     sw $zero, ($t3)                         # store (save) 0 (word) in C[i]
 
     j movePointer
+    ##################
 
 movePointer:                                # move the pointer in all the arrays
     # addi: Add an immediate number with overflow
