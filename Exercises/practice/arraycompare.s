@@ -26,8 +26,8 @@ main:
     slt $t0, $zero, $a1     # if 0 < N, t0 = 1
     beqz $t0, errorInProgram
 
-    # Check that N is not negative or zero
-    slt $t0, $zero, $a2     # if 0 < Num.Occurrences, t0 = 1
+    # Check that Num. Occurences is not negative or zero
+    slt $t0, $zero, $a2     # if 0 < Num. Occurrences, t0 = 1
     beqz $t0, errorInProgram
 
     # If there's not an error in the program, it'll print zero
