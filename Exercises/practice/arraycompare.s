@@ -1,16 +1,27 @@
-# pbrox@ing.uc3m.es (we must use apoyo.o in CreatorSIM)
-.data
-    .align 2
-    A: .word 7, 3, 6, 6, 0, 1, 6, 6, 6, 6, 0, 0, 6, 5, 2, 0, 2, 4, 5, 6, 6, 6
+######## Array Compare #######
+#
+# This file expects the following arguments:
+#   - $a0: Number of occurrences of the number we are searching for.
+#   - $a1: Length of the array.
+#   - $a2: Address of the initial element of the array.
+#   - $a3: Number we're searching for.
+#
+# You can use the following data segment to test this code directly:
+# .data
+#     .align 2
+#     A: .word 7, 3, 6, 6, 0, 1, 6, 6, 6, 6, 0, 0, 6, 5, 2, 0, 2, 4, 5, 6, 6, 6
+#
+# If you use that example, remember to add the following lines of code at the beginning
+# of the main function:
+# li $a0, 2       # Number of occurences
+# li $a1, 22      # N = length of the array
+# la $a2, A       # A (array)
+# li $a3, 6       # Number to search for
+##############################
 
 .text
 .globl main
 main:
-    li $a0, 2       # Number of occurences
-    li $a1, 22      # N = length of the array
-    la $a2, A       # A (array)
-    li $a3, 6       # Number to search for
-
     # Check that N is not negative or zero
     slt $t0, $zero, $a1     # if 0 < N, t0 = 1
     beqz $t0, errorInProgram
