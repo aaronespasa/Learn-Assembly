@@ -36,7 +36,8 @@ errorInProgram:
     syscall
 
 arrayCompare:
-    move $t0, $a0     # t0 = A (array)
+    # move $t0, $a0     # t0 = A (array)
+    la $t0, A
     move $t1, $a1     # t1 = N
     move $t2, $a2     # t2 = num. occurences
     li $t3, 0       # i = 0
