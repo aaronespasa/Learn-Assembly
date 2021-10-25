@@ -6,9 +6,9 @@
 .text
 .globl main
 main:
-    la $a0, A       # A (array)
+    li $a0, 2       # Number of occurences
     li $a1, 22      # N = length of the array
-    li $a2, 2       # Number of occurences
+    la $a2, A       # A (array)
     li $a3, 6       # Number to search for
 
     # Check that N is not negative or zero
@@ -37,21 +37,18 @@ errorInProgram:
     syscall
 
 arrayCompare:
-    # move $t0, $a0     # t0 = A (array)
-    la $t0, A
     move $t1, $a1     # t1 = N
-    move $t2, $a2     # t2 = num. occurences
-    li $t3, 0       # i = 0
-    li $t4, 0       # counter of contiguous N
-    li $t5, 0       # sum of number of different sequences
+    move $t2, $a0     # t2 = num. occurences
+    li $t3, 0         # i = 0
+    li $t4, 0         # counter of contiguous N
+    li $t5, 0         # sum of number of different sequences
 
 loop:
     beq $t3, $t1, end_loop
 
     # A[i] -> get (load) a value (word) from arrayA and store it in $t6
-    lw $t6, ($t0)
+    lw $t6, ($a2)
     # cmp returns 1 if A[i] == N, 0 otherwise
-    # if is sum, 
     move $a0, $t6
     move $a1, $a3
     jal cmp
@@ -81,7 +78,7 @@ resetContiguousCounter:
     li $t4, 0
 
 movePointer:
-    addi $t0, $t0, 4            # A[i + 1]
+    addi $a2, $a2, 4            # A[i + 1]
     addi $t3, $t3, 1            # i += 1
     j loop
 
