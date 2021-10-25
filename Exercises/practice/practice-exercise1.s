@@ -9,6 +9,7 @@ main:
     la $a0, A       # A (array)
     li $a1, 22      # N = length of the array
     li $a2, 2       # Number of occurences
+    li $a3, 6       # Number to search for
 
     # Check that N is not negative or zero
     slt $t0, $zero, $a1     # if 0 < N, t0 = 1
@@ -47,17 +48,17 @@ arrayCompare:
 loop:
     beq $t3, $t1, end_loop
 
-    # A[i] -> get (load) a value (word) from arrayA and store it in $t5
+    # A[i] -> get (load) a value (word) from arrayA and store it in $t6
     lw $t6, ($t0)
     # cmp returns 1 if A[i] == N, 0 otherwise
     # if is sum, 
     move $a0, $t6
-    move $a1, $t1
+    move $a1, $a3
     jal cmp
     move $t7, $v0
     beq $t7, 1, addOneToCounter
 
-    j movePointer
+    j resetContiguousCounter
 
 addOneToCounter:
     addi $t4, $t4, 1
@@ -76,13 +77,16 @@ addOneToSum:
     addi $t5, $t5, 1
     j movePointer
 
+resetContiguousCounter:
+    li $t4, 0
+
 movePointer:
     addi $t0, $t0, 4            # A[i + 1]
     addi $t3, $t3, 1            # i += 1
     j loop
 
 end_loop:
-    move $a0, $t0
+    move $a0, $t5
     li $v0, 1
     syscall
 
