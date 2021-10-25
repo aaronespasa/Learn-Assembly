@@ -1,5 +1,7 @@
 ######## Array Compare #######
 #
+# This file uses the library apoyo.o. Remember to load it as a library!
+#
 # This file expects the following arguments:
 #   - $a0: Number of occurrences of the number we are searching for.
 #   - $a1: Length of the array.
@@ -20,8 +22,8 @@
 ##############################
 
 .text
-.globl main
-main:
+.globl arraycompare
+arraycompare:
     # Check that N is not negative or zero
     slt $t0, $zero, $a1     # if 0 < N, t0 = 1
     beqz $t0, errorInProgram
@@ -35,7 +37,7 @@ main:
     li $a0, 0
     syscall
 
-    j arrayCompare
+    j arraycompareMainFunction
 
 errorInProgram:
     # Return -1
@@ -44,10 +46,9 @@ errorInProgram:
     syscall
     
     # End Program
-    li $v0, 10
-    syscall
+    jr $ra
 
-arrayCompare:
+arraycompareMainFunction:
     move $t1, $a1     # t1 = N
     move $t2, $a0     # t2 = num. occurences
     li $t3, 0         # i = 0
@@ -99,5 +100,5 @@ end_loop:
     syscall
 
     # End Program
-    li $v0, 10
+    jr $ra
     syscall
