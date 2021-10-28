@@ -3,10 +3,10 @@
 # This file uses the library apoyo.o. Remember to load it as a library!
 #
 # This file expects the following arguments:
-#   - $a0: Number of occurrLences of the number we are searching for.
+#   - $a0: Address of a vector of integers of dimension N.
 #   - $a1: Length of the array.
-#   - $a2: Address of the initial element of the array.
-#   - $a3: Number we're searching for.
+#   - $a2: Number we're searching for.
+#   - $a3: Number of occurences.
 ##############################
 .data
     .align 2
@@ -15,17 +15,27 @@
 .text
 .globl arraycompare
 arraycompare:
-    li $a0, 2       # Number of occurences
+    # a0 -> a3
+    # li $a0, 2       # Number of occurences
+    li $a3, 2       # Number of occurences
+
+    # a1 is fine
     li $a1, 22      # N = length of the array
-    la $a2, A       # A (array)
-    li $a3, 6       # Number to search for
+
+    # a2 -> a0
+    # la $a2, A       # A (array)
+    la $a0, A       # A (array)
+
+    # a3 -> a2
+    # li $a3, 6       # Number to search for
+    li $a2, 6       # Number to search for
 
     # Check that N is not negative or zero
     slt $t0, $zero, $a1     # if 0 < N, t0 = 1
     beqz $t0, errorInProgram
 
     # Check that Num. Occurences is not negative or zero
-    slt $t0, $zero, $a0     # if 0 < Num. Occurrences, t0 = 1
+    slt $t0, $zero, $a3     # if 0 < Num. Occurrences, t0 = 1
     beqz $t0, errorInProgram
 
     # If there's not an error in the program, it'll print zero
@@ -47,7 +57,7 @@ errorInProgram:
 
 arraycompareMainFunction:
     move $t1, $a1     # t1 = N
-    move $t2, $a0     # t2 = num. occurences
+    move $t2, $a3     # t2 = num. occurences
     li $t3, 0         # i = 0
     li $t4, 0         # counter of contiguous N
     li $t5, 0         # sum of number of different sequences
