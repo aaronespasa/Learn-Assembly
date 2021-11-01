@@ -15,8 +15,8 @@
 .text
 .globl main
 main:
-    la $a0, A       # A (array)
-    move $s0, $a0
+    la $a0, A       
+    move $s0, $a0   # A (array)
     li $a1, 22      # N = length of the array
     li $a2, 6       # Number to search for
     li $a3, 2       # Number of occurences
@@ -54,7 +54,7 @@ arraycompareMainFunction:
     li $t5, 0         # sum of number of different sequences
 
 loop:
-    beq $t3, $t1, end_loop
+    beq $t3, $t1, endLoop
 
     # A[i] -> get (load) a value (word) from arrayA and store it in $t6
     lw $t6, ($s0)
@@ -92,12 +92,10 @@ movePointer:
     addi $t3, $t3, 1            # i += 1
     j loop
 
-end_loop:
+endLoop:
     move $a0, $t5
     li $v0, 1
     syscall
-
-    move $v0, $t1
 
     # End Program
     li $v0, 10

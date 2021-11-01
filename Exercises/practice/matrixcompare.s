@@ -1,7 +1,13 @@
 ######## Matrix Compare #######
 #
-# This file uses the library arraycompare.o. Remember to load it as a library!
+# This file uses the library apoyo.o. Remember to load it as a library!
 #
+# This file expects the following arguments:
+#   - $a0: Address of the matrix.
+#   - $a1: Number of rows of the matrix (M).
+#   - $a2: Number of columns of the matrix (N).
+#   - $a3: Number we're searching for.
+#   - First word on the stack: Number of occurences.
 ###############################
 
 .data
@@ -18,31 +24,31 @@
 .text
 .globl main
 main:
-    lw $a0, numOccurences       # Number of occurences
-    lw $a1, numColumns          # Length of the array
-    la $a2, matrix              # Address of the matrix
-    lw $a3, numToSearch         # Number we're searching for
+    lw $a0, matrix              
+    move $s7, $a0               # Address of the matrix (A)
+    lw $a1, numRows             # Number of rows of the matrix (M)
+    lw $a2, numColumns          # Number of columns of the matrix (N).
+    lw $a3, numToSearch         # Number we're searching for (x)
 
     # Remove this code to receive an element from the stack #
-    lw $s0, numOccurences
-    subu $sp, $sp, 4        # 1024 -> 1020 (the last 4 bytes are the word)
+    lw $t0, numOccurences
+    subu $sp, $sp, 4            # last 4 bytes are for the word
     sw $t0, ($sp)
     #########################################################
     
-    lw $s0, ($sp) 	        # 
-    addu $sp, $sp, 4    # Point the stack pointer to the end 1020 -> 1024
+    lw $s1, ($sp) 	            # Number of occurences (i)
+    addu $sp, $sp, 4            # Point the stack pointer to the end
 
     # Check that N is not negative or zero
-    slt $t0, $zero, $a1     # if 0 < N, t0 = 1
+    slt $t0, $zero, $a2         # if 0 < N, t0 = 1
     beqz $t0, errorInProgram
 
     # Check that M is not negative or zero
-    lb $t1, numRows
-    slt $t0, $zero, $t1     # if 0 < M, t0 = 1
+    slt $t0, $zero, $a1         # if 0 < M, t0 = 1
     beqz $t0, errorInProgram
 
     # Check that Num. Occurences is not negative or zero
-    slt $t0, $zero, $a0     # if 0 < Num.Occurrences, t0 = 1
+    slt $t0, $zero, $s1         # if 0 < Num.Occurrences, t0 = 1
     beqz $t0, errorInProgram
 
     # If there's not an error in the program, it'll print zero
@@ -63,35 +69,126 @@ errorInProgram:
     syscall
 
 matrixCompare:
-    li $t0, 0           # t0 = i = current row = 0
-    lb $t1, numRows     # t1 = number of rows of the matrix
-    li $t2, 0           # t2 = sum of number of different sequences
+    # s7                # Address of the matrix (A)
+    # s1                # Number of occurences
+    li $s2, 0           # s2 = i = current row = 0
+    li $s3, 0           # s3 = sum of number of different sequences
+    move $s4, $a1       # s4 = Number of rows of the matrix (M)
+    move $s5, $a2       # s5 = Number of columns of the matrix (N)
+    move $s6, $a3       # s6 = Number we're searching for
 
 iterateOverRows:
-    beq $t0, $t1, endIteration
+    beq $s2, $s4, endIteration
 
+    # The function arraycompare receives the following arguments:
+    #   - $a0: Address of a vector of integers of dimension N.
+    #   - $a1: Length of the array.
+    #   - $a2: Number we're searching for.
+    #   - $a3: Number of occurences.
+    move $a0, $s7
+    move $a1, $s5
+    move $a2, $s6
+    move $a3, $s1
     # Update a row of arraycompare
     jal arraycompare
 
     # Update the number of different sequences
-    add $t2, $t2, $v0
+    add $s3, $s3, $v0
 
-movePointer:
-    addi $t0, $t0, 1    # i += 1
+goToTheNextRow:
+    addi $s2, $s2, 1    # i += 1
     
-    # Go to the next row ($a2 + $t0 * $a1 * 4):
-    li $t3, 0                    # row initial address ($t0 * $a1 * 4)
-    mul $t3, $t0, $a1            # i * numColumns = $t0 * $a1
-    mul $t3, $t3, 4              # i * numColumns * 4 = $t3 * 4 <- for arrays with words
-    add $a2, $a2, $t3            # A[i+1][0]
+    # Go to the next row ($s7 + $s2 * $s5 * 4):
+    # We've multiple rows in a matrix. $t5 will be a pointer pointing to the initial
+    # address of the current row ($s2)
+    li $t5, 0                    # row initial address ($s2 * $s5 * 4)
+    mul $t5, $s2, $s5            # i * numColumns = $t0 * $s5
+    mul $t5, $t5, 4              # i * numColumns * 4 = $t5 * 4  (4 is for arrays with words)
+    # |
+    # V
+    add $s7, $s7, $t5            # A[i+1][0]
 
     j iterateOverRows
 
 endIteration:
-    move $a0, $t2
+    move $a0, $s3
     li $v0, 1
     syscall
 
     # End Program
     li $v0, 10
     syscall
+
+
+####### ARRAYCOMPARE #######
+arraycompare:
+    move $s0, $a0   # A (array)
+    
+    # Check that N is not negative or zero
+    slt $t0, $zero, $a1     # if 0 < N, t0 = 1
+    beqz $t0, errorInProgram
+
+    # Check that Num. Occurences is not negative or zero
+    slt $t0, $zero, $a3     # if 0 < Num. Occurrences, t0 = 1
+    beqz $t0, errorInProgram
+
+    # If there's not an error in the program, it'll print zero
+    # li $v0, 1
+    # li $a0, 0
+    # syscall
+
+    j arraycompareMainFunction
+
+arraycompareMainFunction:
+    move $t1, $a1     # t1 = N
+    move $t2, $a3     # t2 = num. occurences
+    li $t3, 0         # i = 0
+    li $t4, 0         # counter of contiguous N
+    li $t5, 0         # sum of number of different sequences
+
+loop:
+    beq $t3, $t1, endLoop
+
+    # A[i] -> get (load) a value (word) from arrayA and store it in $t6
+    # TODO: There has been an exception. Error description: 'The memory must be align'
+    lw $t6, ($s0)
+    # cmp returns 1 if A[i] == N, 0 otherwise
+    move $a0, $t6
+    move $a1, $a2
+    jal cmp
+    move $t7, $v0
+    beq $t7, 1, addOneToCounter
+
+    j resetContiguousCounter
+
+addOneToCounter:
+    addi $t4, $t4, 1
+
+    # Add one to the sum of different sequences (t5)
+    # if t4 == 2
+    move $a0, $t4   
+    move $a1, $t2
+    jal cmp
+    move $t7, $v0
+    # Only go to addOneToSum if t4 == 2.
+    beq $t7, 1, addOneToSum
+    j movePointer
+
+addOneToSum:
+    addi $t5, $t5, 1
+    j movePointer
+
+resetContiguousCounter:
+    li $t4, 0
+
+movePointer:
+    addi $s0, $s0, 4            # A[i + 1]
+    addi $t3, $t3, 1            # i += 1
+    j loop
+
+endLoop:
+    move $v0, $t5
+
+    # End Subroutine
+    jr $ra
+#########################
