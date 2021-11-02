@@ -15,7 +15,7 @@
     matrix: .float 2.1,  3.4,  0.3,   4.4,   5.2,   8.0,  3.0
             .float 3.5,  0.0,  3.2,   3.43,  3.334, 0.09, 9.00
             .float 3.43, 3.43, 8.95,  9.95,  6.666, 7.32, 4.44
-            .float 3.0,  0.0,  3.245, 3.245, 0.000, 8.4,  9.9
+            .word 3.0,  0x80200000,  3.245, 3.245, 0.000, 8.4,  9.9        #0x80200000 -> NOT-NORMALIZED
     numRows:       .word 4
     numColumns:    .word 7
     i:             .word 2
@@ -164,9 +164,8 @@ goToTheNextRow:
     # Go to the next row ($s0 + $t0 * $t3 * 4):
     # We've multiple rows in a matrix. $t4 will be a pointer pointing to the initial
     # address of the current row ($t0)
-    li $t5, 0                    # row initial address ($t0 * $t3 * 4)
-    mul $t5, $t0, $t3            # i * numColumns = $t0 * $t3
-    mul $t5, $t5, 4              # i * numColumns * 4 = $t5 * 4  (4 is for arrays with floating p. num.)
+    li $t5, 4                      # t5 = Size of a word = 4
+    mul $t5, $t5, $t3              # 4 * numColumns = $t5 * $t3
     # |
     # V
     add $s0, $s0, $t5            # A[i+1][0]
