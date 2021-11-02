@@ -117,11 +117,33 @@ iterateOverColumns:
     # $f0 = ($s0) = A[$t0][$t1]
     mtc1 ($s0), $f0
 
+    # Slides: https://aulaglobal.uc3m.es/pluginfile.php/4786936/mod_resource/content/4/Unit%202%20-%20Data%20representation%20-%202%20-%20v2.pdf
+
     # TODO: if $f0 is NaN, convert ($s0) into 0
+    # a0 f0
+    # a1 0 11111111 10000000000000000000001
+    # igual podemos utilizar cmp
+    # haz que t0 sea 0 si a0 es igual a a1
+    # beqz $t0, floatingPointNaN
+
+    # TODO: if $f0 is non-normalized (0 is considered NORMALIZED), convert ($s0) into $t7 ($t7 = A[i][j])
     # ...
+    
+    # Solo ejecuta la siguiente línea cuando $f0 sea non-normalized
+    # ...
+    # beqz $t0, floatingPointNonNormalized
 
+    j goToTheNextColumns
 
-    # TODO: if $f0 is non-normalized (0 is considered NORMALIZED), convert ($s0) into $t7
+floatingPointNaN:
+    sw 0, ($s0)
+    ...
+    j goToTheNextColumns
+
+floatingPointNonNormalized:
+    sw $t7, ($s0)
+    ...
+    j goToTheNextColumns
 
 
 goToTheNextColumns:

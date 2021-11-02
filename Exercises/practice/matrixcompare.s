@@ -14,7 +14,7 @@
     .align 2
     matrix: .word 2, 3, 0, 4, 5, 8, 3
             .word 3, 0, 3, 3, 3, 0, 9
-            .word 3, 3, 8, 9, 6, 7, 4
+            .word 3, 3, 8, 9, 6, 7, 4 # it skips this line
             .word 3, 0, 3, 3, 0, 8, 9
     numRows:       .word 4
     numColumns:    .word 7
@@ -24,7 +24,7 @@
 .text
 .globl main
 main:
-    lw $a0, matrix              
+    la $a0, matrix              
     move $s7, $a0               # Address of the matrix (A)
     lw $a1, numRows             # Number of rows of the matrix (M)
     lw $a2, numColumns          # Number of columns of the matrix (N).
@@ -98,12 +98,11 @@ iterateOverRows:
 goToTheNextRow:
     addi $s2, $s2, 1    # i += 1
     
-    # Go to the next row ($s7 + $s2 * $s5 * 4):
+    # Go to the next row ($s7 + $s5 * 4):
     # We've multiple rows in a matrix. $t5 will be a pointer pointing to the initial
     # address of the current row ($s2)
-    li $t5, 0                    # row initial address ($s2 * $s5 * 4)
-    mul $t5, $s2, $s5            # i * numColumns = $t0 * $s5
-    mul $t5, $t5, 4              # i * numColumns * 4 = $t5 * 4  (4 is for arrays with words)
+    li $t5, 4                      # t5 = Size of a word = 4
+    mul $t5, $t5, $s5              # numColumns * 4 = $s5 * $t5        
     # |
     # V
     add $s7, $s7, $t5            # A[i+1][0]
@@ -122,6 +121,11 @@ endIteration:
 
 ####### ARRAYCOMPARE #######
 arraycompare:
+    # We load the $ra into the stack. We do this because we'll call
+    # the subroutine cmp and the value of $ra will be overwritten.
+    sub $sp, $sp, 4            # last 4 bytes are for the word
+    sw $ra, ($sp)               # load the $ra into the stack
+    
     move $s0, $a0   # A (array)
     
     # Check that N is not negative or zero
@@ -131,11 +135,6 @@ arraycompare:
     # Check that Num. Occurences is not negative or zero
     slt $t0, $zero, $a3     # if 0 < Num. Occurrences, t0 = 1
     beqz $t0, errorInProgram
-
-    # If there's not an error in the program, it'll print zero
-    # li $v0, 1
-    # li $a0, 0
-    # syscall
 
     j arraycompareMainFunction
 
@@ -150,8 +149,7 @@ loop:
     beq $t3, $t1, endLoop
 
     # A[i] -> get (load) a value (word) from arrayA and store it in $t6
-    # TODO: There has been an exception. Error description: 'The memory must be align'
-    lw $t6, ($s0)
+    lw $t6, ($s0) 
     # cmp returns 1 if A[i] == N, 0 otherwise
     move $a0, $t6
     move $a1, $a2
@@ -188,6 +186,9 @@ movePointer:
 
 endLoop:
     move $v0, $t5
+
+    lw $ra, ($sp) 	            # Number of occurences (i)
+    addu $sp, $sp, 4            # Point the stack pointer to the end
 
     # End Subroutine
     jr $ra
