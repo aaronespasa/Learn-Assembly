@@ -10,17 +10,45 @@
 .text
 .globl main
 main:
-    # addi $sp, $sp, -4
-    # sw $ra, ($sp)       # save $ra on the stack
-
     la $a0, matrix
     la $a1, vector
     lw $a2, N           # N
     lw $a3, jI          # j
 
+    jal Insert
+
+    li $v0, 10
+    syscall
+
 Insert:
+    li $v0, -1
+    blt $a3, $a0, error
+    bgt $a3, $a2, error
+
+    addi $sp, $sp, -20
+    sw $ra, 0($sp)
+    sw $a0, 4($sp)
+    sw $a1, 8($sp)
+    sw $a2, 12($sp)
+    sw $a3, 16($sp)
+
     jal InsertInRow
+
+    # Restore $ai register just in case they were modified
+    lw $a0, 4($sp)
+    lw $a1, 8($sp)
+    lw $a2, 12($sp)
+    lw $a3, 16($sp)
+
     jal InsertInColumn
+
+    lw $a0, 4($sp)
+    lw $a1, 8($sp)
+    lw $a2, 12($sp)
+    lw $a3, 16($sp)    
+
+    ########################################################
+    ################ Print the matrix ######################
 
     li $t0, 0           # i
     li $t3, 1           # used to print an enter when it's 3
@@ -57,11 +85,25 @@ Insert:
         b insertLoop
 
     endProgram:
-        # lw $ra, ($sp)
-        # addi $sp, $sp, 4
-        # jr $ra
-        li $v0, 10
-        syscall
+        lw $ra, ($sp)
+        lw $a0, 4($sp)
+        lw $a1, 8($sp)
+        lw $a2, 12($sp)
+        lw $a3, 16($sp)
+        addi $sp, $sp, 20
+        jr $ra
+    
+    ########################################################
+
+    # lw $ra, ($sp)
+    # lw $a0, 4($sp)
+    # lw $a1, 8($sp)
+    # lw $a2, 12($sp)
+    # lw $a3, 16($sp)
+    # addi $sp, $sp, 20
+
+    error:
+        jr $ra
 
 InsertInRow:
     # (j * totalCols + i) * wordSize
