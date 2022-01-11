@@ -12,12 +12,12 @@
 
 .data
     .align 2
-    matrix: .float 2.1,  3.4,  0.3,   4.4,   5.2,   8.0,  3.0
-            .float 3.5,  0.0,  3.2,   3.43,  3.334, 0.09, 9.00
-            .float 3.43, 3.43, 8.95,  9.95,  6.666, 7.32, 4.44
-            .word 3.0,  0x80200000,  3.245, 3.245, 0.000, 8.4,  9.9        #0x80200000 -> NOT-NORMALIZED
+    matrix: .float 3.4,         0.3,          4.4   
+            .float 0.0,         3.2,          3.43 
+            .word  0x405b851f,  0x410f3333,   0xffa00000        #0xffa00000 -> NaN
+            .word  0x80200000,  0x404fae14,   0x404fae14        #0x80200000 -> NOT-NORMALIZED
     numRows:       .word 4
-    numColumns:    .word 7
+    numColumns:    .word 3
     i:             .word 2
     j:             .word 3
 
@@ -117,19 +117,13 @@ iterateOverColumns:
     # $f0 = ($s0) = A[$t0][$t1]
     mtc1 ($s0), $f0
 
-    # Slides: https://aulaglobal.uc3m.es/pluginfile.php/4786936/mod_resource/content/4/Unit%202%20-%20Data%20representation%20-%202%20-%20v2.pdf
-
     # TODO: if $f0 is NaN, convert ($s0) into 0
     # a0 f0
     # a1 0 11111111 10000000000000000000001
-    # igual podemos utilizar cmp
-    # haz que t0 sea 0 si a0 es igual a a1
-    # beqz $t0, floatingPointNaN
+    # ...
+     # beqz $t0, floatingPointNaN
 
     # TODO: if $f0 is non-normalized (0 is considered NORMALIZED), convert ($s0) into $t7 ($t7 = A[i][j])
-    # ...
-    
-    # Solo ejecuta la siguiente línea cuando $f0 sea non-normalized
     # ...
     # beqz $t0, floatingPointNonNormalized
 

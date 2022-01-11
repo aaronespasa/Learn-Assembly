@@ -1,0 +1,63 @@
+{
+  "instructions_binary": [
+    {
+      "Break": null,
+      "Address": "0x0",
+      "Label": "cmp",
+      "loaded": "00010000100001010000000000000010",
+      "user": null,
+      "_rowVariant": "",
+      "visible": false,
+      "globl": true
+    },
+    {
+      "Break": null,
+      "Address": "0x4",
+      "Label": "",
+      "loaded": "00100000000000100000000000000000",
+      "user": null,
+      "_rowVariant": "",
+      "visible": false
+    },
+    {
+      "Break": null,
+      "Address": "0x8",
+      "Label": "",
+      "loaded": "00000011111000000000000000001000",
+      "user": null,
+      "_rowVariant": "",
+      "visible": false
+    },
+    {
+      "Break": null,
+      "Address": "0xc",
+      "Label": "equal_symbol",
+      "loaded": "00100000000000100000000000000001",
+      "user": null,
+      "_rowVariant": "",
+      "visible": false,
+      "globl": false
+    },
+    {
+      "Break": null,
+      "Address": "0x10",
+      "Label": "",
+      "loaded": "00000011111000000000000000001000",
+      "user": null,
+      "_rowVariant": "",
+      "visible": false
+    }
+  ],
+  "instructions_tag": [
+    {
+      "tag": "cmp",
+      "addr": 0,
+      "globl": true
+    },
+    {
+      "tag": "equal_symbol",
+      "addr": 12,
+      "globl": false
+    }
+  ]
+}

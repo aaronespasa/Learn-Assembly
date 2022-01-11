@@ -1,0 +1,488 @@
+{
+  "instructions_binary": [
+    {
+      "Break": null,
+      "Address": "0x14",
+      "Label": "arraycompare_symbol",
+      "loaded": "00000000000001010100000000101010",
+      "user": null,
+      "_rowVariant": "",
+      "visible": false,
+      "globl": false
+    },
+    {
+      "Break": null,
+      "Address": "0x18",
+      "Label": "",
+      "loaded": "00010001000000000000000000000000",
+      "user": null,
+      "_rowVariant": "",
+      "visible": false
+    },
+    {
+      "Break": null,
+      "Address": "0x1c",
+      "Label": "",
+      "loaded": "00000000000001000100000000101010",
+      "user": null,
+      "_rowVariant": "",
+      "visible": false
+    },
+    {
+      "Break": null,
+      "Address": "0x20",
+      "Label": "",
+      "loaded": "00010001000000000000000000000000",
+      "user": null,
+      "_rowVariant": "",
+      "visible": false
+    },
+    {
+      "Break": null,
+      "Address": "0x24",
+      "Label": "",
+      "loaded": "00100000000000100000000000000001",
+      "user": null,
+      "_rowVariant": "",
+      "visible": false
+    },
+    {
+      "Break": null,
+      "Address": "0x28",
+      "Label": "",
+      "loaded": "00100000000001000000000000000000",
+      "user": null,
+      "_rowVariant": "",
+      "visible": false
+    },
+    {
+      "Break": null,
+      "Address": "0x2c",
+      "Label": "",
+      "loaded": "00000000000000000000000000001100",
+      "user": null,
+      "_rowVariant": "",
+      "visible": false
+    },
+    {
+      "Break": null,
+      "Address": "0x30",
+      "Label": "",
+      "loaded": "00001000000000000000000001010000",
+      "user": null,
+      "_rowVariant": "",
+      "visible": false
+    },
+    {
+      "Break": null,
+      "Address": "0x34",
+      "Label": "errorInProgram_symbol",
+      "loaded": "00100000000000100000000000000001",
+      "user": null,
+      "_rowVariant": "",
+      "visible": false,
+      "globl": false
+    },
+    {
+      "Break": null,
+      "Address": "0x38",
+      "Label": "",
+      "loaded": "00111100000000011111111111111111",
+      "user": null,
+      "_rowVariant": "",
+      "visible": false
+    },
+    {
+      "Break": null,
+      "Address": "0x3c",
+      "Label": "",
+      "loaded": "00110100001000011111111111111111",
+      "user": null,
+      "_rowVariant": "",
+      "visible": false
+    },
+    {
+      "Break": null,
+      "Address": "0x40",
+      "Label": "",
+      "loaded": "00000000001000000010000000100000",
+      "user": null,
+      "_rowVariant": "",
+      "visible": false
+    },
+    {
+      "Break": null,
+      "Address": "0x44",
+      "Label": "",
+      "loaded": "00000000000000000000000000001100",
+      "user": null,
+      "_rowVariant": "",
+      "visible": false
+    },
+    {
+      "Break": null,
+      "Address": "0x48",
+      "Label": "",
+      "loaded": "00100000000000100000000000001010",
+      "user": null,
+      "_rowVariant": "",
+      "visible": false
+    },
+    {
+      "Break": null,
+      "Address": "0x4c",
+      "Label": "",
+      "loaded": "00000000000000000000000000001100",
+      "user": null,
+      "_rowVariant": "",
+      "visible": false
+    },
+    {
+      "Break": null,
+      "Address": "0x50",
+      "Label": "arraycompareMainFunction_symbol",
+      "loaded": "00000000101000000100100000100000",
+      "user": null,
+      "_rowVariant": "",
+      "visible": false,
+      "globl": false
+    },
+    {
+      "Break": null,
+      "Address": "0x54",
+      "Label": "",
+      "loaded": "00000000100000000101000000100000",
+      "user": null,
+      "_rowVariant": "",
+      "visible": false
+    },
+    {
+      "Break": null,
+      "Address": "0x58",
+      "Label": "",
+      "loaded": "00100000000010110000000000000000",
+      "user": null,
+      "_rowVariant": "",
+      "visible": false
+    },
+    {
+      "Break": null,
+      "Address": "0x5c",
+      "Label": "",
+      "loaded": "00100000000011000000000000000000",
+      "user": null,
+      "_rowVariant": "",
+      "visible": false
+    },
+    {
+      "Break": null,
+      "Address": "0x60",
+      "Label": "",
+      "loaded": "00100000000011010000000000000000",
+      "user": null,
+      "_rowVariant": "",
+      "visible": false
+    },
+    {
+      "Break": null,
+      "Address": "0x64",
+      "Label": "loop_symbol",
+      "loaded": "00010001011010010000000000000000",
+      "user": null,
+      "_rowVariant": "",
+      "visible": false,
+      "globl": false
+    },
+    {
+      "Break": null,
+      "Address": "0x68",
+      "Label": "",
+      "loaded": "10001100110011100000000000000000",
+      "user": null,
+      "_rowVariant": "",
+      "visible": false
+    },
+    {
+      "Break": null,
+      "Address": "0x6c",
+      "Label": "",
+      "loaded": "00000001110000000010000000100000",
+      "user": null,
+      "_rowVariant": "",
+      "visible": false
+    },
+    {
+      "Break": null,
+      "Address": "0x70",
+      "Label": "",
+      "loaded": "00000000111000000010100000100000",
+      "user": null,
+      "_rowVariant": "",
+      "visible": false
+    },
+    {
+      "Break": null,
+      "Address": "0x74",
+      "Label": "",
+      "loaded": "00001100000000000000000000000000",
+      "user": null,
+      "_rowVariant": "",
+      "visible": false
+    },
+    {
+      "Break": null,
+      "Address": "0x78",
+      "Label": "",
+      "loaded": "00000000010000000111100000100000",
+      "user": null,
+      "_rowVariant": "",
+      "visible": false
+    },
+    {
+      "Break": null,
+      "Address": "0x7c",
+      "Label": "",
+      "loaded": "00110100001000000000000000000001",
+      "user": null,
+      "_rowVariant": "",
+      "visible": false
+    },
+    {
+      "Break": null,
+      "Address": "0x80",
+      "Label": "",
+      "loaded": "00010001111000010000000000000000",
+      "user": null,
+      "_rowVariant": "",
+      "visible": false
+    },
+    {
+      "Break": null,
+      "Address": "0x84",
+      "Label": "",
+      "loaded": "00001000000000000000000010110000",
+      "user": null,
+      "_rowVariant": "",
+      "visible": false
+    },
+    {
+      "Break": null,
+      "Address": "0x88",
+      "Label": "addOneToCounter_symbol",
+      "loaded": "00100001100011000000000000000001",
+      "user": null,
+      "_rowVariant": "",
+      "visible": false,
+      "globl": false
+    },
+    {
+      "Break": null,
+      "Address": "0x8c",
+      "Label": "",
+      "loaded": "00000001100000000010000000100000",
+      "user": null,
+      "_rowVariant": "",
+      "visible": false
+    },
+    {
+      "Break": null,
+      "Address": "0x90",
+      "Label": "",
+      "loaded": "00100000000001010000000000000010",
+      "user": null,
+      "_rowVariant": "",
+      "visible": false
+    },
+    {
+      "Break": null,
+      "Address": "0x94",
+      "Label": "",
+      "loaded": "00001100000000000000000000000000",
+      "user": null,
+      "_rowVariant": "",
+      "visible": false
+    },
+    {
+      "Break": null,
+      "Address": "0x98",
+      "Label": "",
+      "loaded": "00000000010000000111100000100000",
+      "user": null,
+      "_rowVariant": "",
+      "visible": false
+    },
+    {
+      "Break": null,
+      "Address": "0x9c",
+      "Label": "",
+      "loaded": "00110100001000000000000000000001",
+      "user": null,
+      "_rowVariant": "",
+      "visible": false
+    },
+    {
+      "Break": null,
+      "Address": "0xa0",
+      "Label": "",
+      "loaded": "00010001111000010000000000000000",
+      "user": null,
+      "_rowVariant": "",
+      "visible": false
+    },
+    {
+      "Break": null,
+      "Address": "0xa4",
+      "Label": "",
+      "loaded": "00001000000000000000000010110100",
+      "user": null,
+      "_rowVariant": "",
+      "visible": false
+    },
+    {
+      "Break": null,
+      "Address": "0xa8",
+      "Label": "addOneToSum_symbol",
+      "loaded": "00100001101011010000000000000001",
+      "user": null,
+      "_rowVariant": "",
+      "visible": false,
+      "globl": false
+    },
+    {
+      "Break": null,
+      "Address": "0xac",
+      "Label": "",
+      "loaded": "00001000000000000000000010110100",
+      "user": null,
+      "_rowVariant": "",
+      "visible": false
+    },
+    {
+      "Break": null,
+      "Address": "0xb0",
+      "Label": "resetContiguousCounter_symbol",
+      "loaded": "00100000000011000000000000000000",
+      "user": null,
+      "_rowVariant": "",
+      "visible": false,
+      "globl": false
+    },
+    {
+      "Break": null,
+      "Address": "0xb4",
+      "Label": "movePointer_symbol",
+      "loaded": "00100000110001100000000000000100",
+      "user": null,
+      "_rowVariant": "",
+      "visible": false,
+      "globl": false
+    },
+    {
+      "Break": null,
+      "Address": "0xb8",
+      "Label": "",
+      "loaded": "00100001011010110000000000000001",
+      "user": null,
+      "_rowVariant": "",
+      "visible": false
+    },
+    {
+      "Break": null,
+      "Address": "0xbc",
+      "Label": "",
+      "loaded": "00001000000000000000000001100100",
+      "user": null,
+      "_rowVariant": "",
+      "visible": false
+    },
+    {
+      "Break": null,
+      "Address": "0xc0",
+      "Label": "end_loop_symbol",
+      "loaded": "00000001101000000010000000100000",
+      "user": null,
+      "_rowVariant": "",
+      "visible": false,
+      "globl": false
+    },
+    {
+      "Break": null,
+      "Address": "0xc4",
+      "Label": "",
+      "loaded": "00100000000000100000000000000001",
+      "user": null,
+      "_rowVariant": "",
+      "visible": false
+    },
+    {
+      "Break": null,
+      "Address": "0xc8",
+      "Label": "",
+      "loaded": "00000000000000000000000000001100",
+      "user": null,
+      "_rowVariant": "",
+      "visible": false
+    },
+    {
+      "Break": null,
+      "Address": "0xcc",
+      "Label": "",
+      "loaded": "00000001001000000001000000100000",
+      "user": null,
+      "_rowVariant": "",
+      "visible": false
+    },
+    {
+      "Break": null,
+      "Address": "0xd0",
+      "Label": "",
+      "loaded": "00000011111000000000000000001000",
+      "user": null,
+      "_rowVariant": "",
+      "visible": false
+    }
+  ],
+  "instructions_tag": [
+    {
+      "tag": "cmp_symbol",
+      "addr": 0,
+      "globl": false
+    },
+    {
+      "tag": "arraycompare",
+      "addr": 20
+    },
+    {
+      "tag": "errorInProgram",
+      "addr": 52
+    },
+    {
+      "tag": "arraycompareMainFunction",
+      "addr": 80
+    },
+    {
+      "tag": "loop",
+      "addr": 100
+    },
+    {
+      "tag": "addOneToCounter",
+      "addr": 136
+    },
+    {
+      "tag": "addOneToSum",
+      "addr": 168
+    },
+    {
+      "tag": "resetContiguousCounter",
+      "addr": 176
+    },
+    {
+      "tag": "movePointer",
+      "addr": 180
+    },
+    {
+      "tag": "end_loop",
+      "addr": 192
+    }
+  ]
+}
