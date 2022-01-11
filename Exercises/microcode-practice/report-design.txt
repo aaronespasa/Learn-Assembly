@@ -1,0 +1,8 @@
+For the report:
+1   -> Brief introduction
+    -> Table:
+          Name          RT LAG (elem op)         Control Sig             Design dec (decision)
+                        Rr1 <- 0
+2   -> Diff between ARM and MIPS 32 w/ proof (adv and disadvantages)
+
+3   -> Conclussion
