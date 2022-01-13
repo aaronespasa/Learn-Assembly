@@ -36,7 +36,7 @@ main:
 ADD:
     lw $t0, 0($sp)
 
-    beqz $a3, addElementsInColumnI
+    beqz $a3, sumElementsInColumnI
 
 sumElementsInRowI:
     # if t0 > N: v0=-1 and v1=0
@@ -99,4 +99,3 @@ outOfRange:
 
 endProgram:
     jr $ra
-
